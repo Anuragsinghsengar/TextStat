@@ -1,5 +1,5 @@
 {
-  "homepage": "https://Anuragsinghsengar.github.io/textstat",
+  "homepage": "https://Anuragsinghsengar.github.io/TextStat",
   "name": "textstat",
   "version": "0.1.0",
   "private": true,
@@ -14,7 +14,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "gh-pages-clean": "git branch -D gh-pages",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",

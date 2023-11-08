@@ -20,16 +20,16 @@ export default function Navbar(props) {
           <a className="nav-link" href="#">{props.About}</a>
         </li>
         </ul>
-      <form className="d-flex" role="search">
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button className="btn btn-outline-success mx-1" type="submit">Search</button>
-      </form>
       <div className="p-3 mb-2 bg-primary text-white mx-1" onClick={props.BlueMode}></div>
       <div className="p-3 mb-2 bg-success text-white mx-1" onClick={props.GreenMode}></div> 
       <div className="p-3 mb-2 bg-danger text-white mx-1" onClick={props.RedMode}></div> 
       <div className="p-3 mb-2 bg-warning text-dark mx-1" onClick={props.YellowMode}></div>
       <div className="p-3 mb-2 bg-dark text-white border mx-1" onClick={props.DarkMode}></div>
       <div className="p-3 mb-2 bg-light text-dark mx-1" onClick={props.LightMode}></div>
+      <form className="d-flex" role="search">
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button className="btn btn-outline-success mx-1" type="submit">Search</button>
+      </form>
       {/* <div className="form-check form-switch mx-2">
         <label className={`form-check-label text-${props.mode ==='light'?'black':'white'}`} htmlFor="flexSwitchCheckDefault">Enable Blue Mode</label>
         <input className="form-check-input" onClick={props.BlueMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>

@@ -1,7 +1,7 @@
 import React,{ useState} from 'react'
 
 export default function TextForm(props) {
-    let c = 0;
+    // let c = 0;
     const handleUpClick = () => {
         console.log("uppercase was clicked");
         let newtext = text.toUpperCase();
@@ -27,7 +27,7 @@ export default function TextForm(props) {
     const handleSpaces = () => {
         console.log("spaces have been handles");
         let z = text.split(" ").length;
-        if(z != 1){
+        if(z !== 1){
             let newtext = text.replaceAll(' ','_');
             setText(newtext);
             props.showAlert('Spaces have been handled','success');
@@ -40,14 +40,15 @@ export default function TextForm(props) {
     const highlightVowels = () => {
         console.log("Vowels have been replaced");
         let i = text.split("|").length
-            if(i == 1){
+            if(i === 1){
             let newtext = text.replaceAll('a',' |a| ').replaceAll('e',' |e| ').replaceAll('i',' |i| ').replaceAll('o',' |o| ').replaceAll('u',' |u| ');
             setText(newtext);
+            props.showAlert('Vowels have been highlighted','success');
         }else{
             let newtext = text.replaceAll(' |','').replaceAll('| ','');
             setText(newtext);
+            props.showAlert('Vowels highlighting has been reversed','success');
         }
-        props.showAlert('Vowels have been handled','success');
     }
     const handleCopy = () => {
         console.log("text was copied");
@@ -55,7 +56,7 @@ export default function TextForm(props) {
         a.select();
         navigator.clipboard.writeText(a.value); 
         document.getSelection().removeAllRanges();
-        props.showAlert('Text has been handled','success');
+        props.showAlert('Text has been copied','success');
     }
     const handleExtraSpaces = () => {
         console.log('extra spaces have been handled');
@@ -70,22 +71,22 @@ export default function TextForm(props) {
    <div className="container my-3" style ={{color :props.mode ==='light'?'black':'white'}}>
    <h2>{props.heading}</h2>
    <textarea className="form-control" id="myBox" rows="8" style={{backgroundColor:props.mode ==='light'?'white':'grey',color:props.mode ==='light'?'black':'white'}} value={text} onChange={handleUpChange}></textarea>
-   <button className="btn btn-primary my-2" onClick = {handleUpClick} disabled = { text.split(" ").filter( (element) => { return element.length != 0}).length == 0 } >Convert to UpperCase</button>
-   <button className="btn btn-success my-2 mx-1" onClick = {handleDownClick} disabled = { text.split(" ").filter( (element) => { return element.length != 0}).length == 0 }>Convert to LowerCase</button>
-   <button className="btn btn-danger my-2 mx-1" onClick = {handleClear} disabled = { text.split(" ").filter( (element) => { return element.length != 0}).length == 0 }>Clear text</button>
-   <button className="btn btn-info my-2 mx-1" onClick = {handleSpaces} disabled = { text.split(" ").filter( (element) => { return element.length != 0}).length == 0 }>Handle Spaces</button>
-   <button className="btn btn-secondary my-2 mx-1" onClick = {highlightVowels} disabled = { text.split(" ").filter( (element) => { return element.length != 0}).length == 0 }> Highlight Vowels</button>
-   <button className="btn btn-success my-2 mx-1" onClick = {handleCopy} disabled = { text.split(" ").filter( (element) => { return element.length != 0}).length == 0 }>Copy text</button>
-   <button className="btn btn-info my-2 mx-1" onClick = {handleExtraSpaces} disabled = { text.split(" ").filter( (element) => { return element.length != 0}).length == 0 }>Handle Extra Spaces</button>
+   <button className="btn btn-primary my-2" onClick = {handleUpClick} disabled = { text.split(" ").filter( (element) => { return element.length !== 0}).length === 0 } >Convert to UpperCase</button>
+   <button className="btn btn-success my-2 mx-1" onClick = {handleDownClick} disabled = { text.split(" ").filter( (element) => { return element.length !== 0}).length === 0 }>Convert to LowerCase</button>
+   <button className="btn btn-danger my-2 mx-1" onClick = {handleClear} disabled = { text.split(" ").filter( (element) => { return element.length !== 0}).length === 0 }>Clear text</button>
+   <button className="btn btn-info my-2 mx-1" onClick = {handleSpaces} disabled = { text.split(" ").filter( (element) => { return element.length !== 0}).length === 0 }>Handle Spaces</button>
+   <button className="btn btn-secondary my-2 mx-1" onClick = {highlightVowels} disabled = { text.split(" ").filter( (element) => { return element.length !== 0}).length === 0 }> Highlight Vowels</button>
+   <button className="btn btn-success my-2 mx-1" onClick = {handleCopy} disabled = { text.split(" ").filter( (element) => { return element.length !== 0}).length === 0 }>Copy text</button>
+   <button className="btn btn-info my-2 mx-1" onClick = {handleExtraSpaces} disabled = { text.split(" ").filter( (element) => { return element.length !== 0}).length === 0 }>Handle Extra Spaces</button>
 
    </div>
    <div className='container my-2' style ={{color :props.mode ==='light'?'black':'white'}}>
    <b><h2>Summary</h2></b>
    <b><p>Number Of Characters = { text.length }</p></b> 
-   <b><p>Number Of Words = {text.split(/\s+/).filter( (element) => { return element.length != 0} ).length }</p></b>
+   <b><p>Number Of Words = {text.split(/\s+/).filter( (element) => { return element.length !== 0} ).length }</p></b>
    <b><h2>Preview</h2></b>
    <b><p>{text}</p></b>
-   <b><p>{0.008 * text.split(/\s+/).filter( (element) => { return element.length != 0} ).length } Minutes read</p></b>
+   <b><p>{0.008 * text.split(/\s+/).filter( (element) => { return element.length !== 0} ).length } Minutes read</p></b>
    </div>
    </>
   )

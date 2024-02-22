@@ -1,16 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import About from './components/About';
 import React,{useState} from 'react';
 import Alert from './components/Alert';
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   Link
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 function App() {
   const [mode,setMode] = useState('light');
@@ -41,7 +39,7 @@ function App() {
     }
   }
   const BlueMode = () => {
-    if(mode == 'blue'){
+    if(mode === 'blue'){
       // setMode('light')
       // document.body.style.backgroundColor = 'white'
       // showAlert('Light Mode has been enabled','success');
@@ -55,7 +53,7 @@ function App() {
     }
   }
   const LightMode = () => {
-    if(mode == 'light'){
+    if(mode === 'light'){
       // setMode('light')
       // document.body.style.backgroundColor = 'white'
       // showAlert('Light Mode has been enabled','success');
@@ -69,7 +67,7 @@ function App() {
     }
   }
   const GreenMode = () => {
-    if(mode == 'green'){
+    if(mode === 'green'){
       // setMode('light')
       // document.body.style.backgroundColor = 'white'
       // showAlert('Light Mode has been enabled','success');
@@ -83,7 +81,7 @@ function App() {
     }
   }
   const RedMode = () => {
-    if(mode == 'red'){
+    if(mode === 'red'){
       // setMode('light')
       // document.body.style.backgroundColor = 'white'
       // showAlert('Light Mode has been enabled','success');
@@ -97,7 +95,7 @@ function App() {
     }
   }
   const YellowMode = () => {
-    if(mode == 'yellow'){
+    if(mode === 'yellow'){
       // setMode('white')
       // document.body.style.backgroundColor = 'white'
       // showAlert('Light Mode has been enabled','success');
@@ -112,19 +110,19 @@ function App() {
   }
   return (
     <>
-    {/* <Router> */}
+    <Router>
     <Navbar Home="Home" About="About" mode={mode} DarkMode={DarkMode} BlueMode={BlueMode} GreenMode={GreenMode} RedMode={RedMode} YellowMode={YellowMode}  LightMode={LightMode}/>
     <Alert alert={alert}/>
+    
     <div className='container my-4'>
-      {/* /* <Routes>
-        <Route exact path = "/about" element ={
-        {<About/>}/> }
-         <Route exact path = "/" element={ */}
-        <TextForm heading="Enter the text you want to analyze below" mode={mode} showAlert={showAlert}/> 
+      <Routes>
+         <Route path = "/" element={
+        <TextForm heading="Enter the text you want to analyze below" mode={mode} showAlert={showAlert} /> }/>
+        <Route path = "/about" element ={<About/> }/> 
         
-    </div>
-        {/* </Routes> */}
-    {/* </Router> */}
+        </Routes> 
+        </div>
+    </Router>
     </>
   );
 }
